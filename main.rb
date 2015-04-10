@@ -5,9 +5,11 @@ module ZOrder
 end
 
 require_relative 'loveandcoconuts.rb'
-require_relative 'heart.rb'
-require_relative 'player.rb'
-require_relative 'coconut.rb'
 
-window = GameWindow.new
-window.show
+require_relative 'states/game_state'
+require_relative 'states/menu_state'
+require_relative 'states/play_state'
+
+$window = GameWindow.new
+GameState.switch(MenuState.instance)
+$window.show

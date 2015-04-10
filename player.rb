@@ -1,8 +1,8 @@
 class Player
   attr_reader :score, :lives
 
-  def initialize(window)
-    @image = Gosu::Image.new(window, "images/dudeleft1.png", false)
+  def initialize
+    @image = Gosu::Image.new($window, "images/dudeleft1.png", false)
     @x = @y = 0
     @score = 0
     @lives = 3
