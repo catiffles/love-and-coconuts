@@ -28,9 +28,10 @@ class GameWindow < Gosu::Window
       @hearts.push(Heart.new(@heart_anim))
     end
 
-    if rand(100) < 4 and @coconuts.size < 15 then
+    if rand(100) < 4 then
       @coconuts.push(Coconut.new(@coconut_anim))
     end
+
   end
 
   def draw
@@ -39,7 +40,9 @@ class GameWindow < Gosu::Window
     @font.draw("Score: #{@player.score}", 10, 10, ZOrder::UI)
     @player.draw
     @hearts.each { |heart| heart.draw }
-    @coconuts.each { |coconut| coconut.draw }
+    @coconuts.each { |coconut| coconut.draw
+      coconut.drop
+    }
   end
 
   def button_down(id)
