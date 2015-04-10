@@ -23,8 +23,8 @@ class PlayState < GameState
   end
 
   def update
-    @player.walkleft if Gosu::KbLeft
-    @player.walkright if Gosu::KbRight
+    @player.walkleft if $window.button_down?(Gosu::KbLeft)
+    @player.walkright if $window.button_down?(Gosu::KbRight)
     @player.collect_hearts(@hearts)
     @player.hit_by_coconut(@coconuts)
 

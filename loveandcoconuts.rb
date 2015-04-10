@@ -3,6 +3,7 @@ class GameWindow < Gosu::Window
 
   def initialize
     super(500, 400, false)
+    $window = self
   end
 
   def update
