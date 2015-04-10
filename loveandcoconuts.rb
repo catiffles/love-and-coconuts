@@ -23,6 +23,7 @@ class GameWindow < Gosu::Window
     @player.walkleft if button_down?(Gosu::KbLeft)
     @player.walkright if button_down?(Gosu::KbRight)
     @player.collect_hearts(@hearts)
+    @player.hit_by_coconut(@coconuts)
 
     if rand(100) < 4 and @hearts.size < 2 then
       @hearts.push(Heart.new(@heart_anim))
@@ -38,6 +39,7 @@ class GameWindow < Gosu::Window
     @background_image.draw(0, 0, ZOrder::Background)
     @message.draw(250,70,50)
     @font.draw("Score: #{@player.score}", 10, 10, ZOrder::UI)
+    @font.draw("Lives Left: #{@player.lives}", 20, 20, ZOrder::UI)
     @player.draw
     @hearts.each { |heart| heart.draw }
     @coconuts.each { |coconut| coconut.draw

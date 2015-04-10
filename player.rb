@@ -1,10 +1,11 @@
 class Player
-  attr_reader :score
+  attr_reader :score, :lives
 
   def initialize(window)
     @image = Gosu::Image.new(window, "images/dudeleft1.png", false)
     @x = @y = 0
     @score = 0
+    @lives = 3
   end
 
   def warp(x, y)
@@ -27,6 +28,17 @@ class Player
     hearts.reject! do |heart|
       if Gosu::distance(@x, @y, heart.x, heart.y) < 35 then
         @score += 1
+        true
+      else
+        false
+      end
+    end
+  end
+
+  def hit_by_coconut(coconuts)
+    coconuts.reject! do |coconut|
+      if Gosu::distance(@x, @y, coconut.x, coconut.y) < 10 then
+        @lives -= 1
         true
       else
         false
