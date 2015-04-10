@@ -13,6 +13,9 @@ class GameWindow < Gosu::Window
     @heart_anim = Gosu::Image::load_tiles(self, "images/heart.png", 25, 25, false)
     @hearts = Array.new
 
+    @coconut_anim = Gosu::Image::load_tiles(self, "images/coconut.png", 25, 25, false)
+    @coconuts = Array.new
+
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
   end
 
@@ -24,6 +27,10 @@ class GameWindow < Gosu::Window
     if rand(100) < 4 and @hearts.size < 2 then
       @hearts.push(Heart.new(@heart_anim))
     end
+
+    if rand(100) < 4 and @coconuts.size < 15 then
+      @coconuts.push(Coconut.new(@coconut_anim))
+    end
   end
 
   def draw
@@ -32,6 +39,7 @@ class GameWindow < Gosu::Window
     @font.draw("Score: #{@player.score}", 10, 10, ZOrder::UI)
     @player.draw
     @hearts.each { |heart| heart.draw }
+    @coconuts.each { |coconut| coconut.draw }
   end
 
   def button_down(id)

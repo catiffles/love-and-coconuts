@@ -12,5 +12,3 @@ class Heart
     img.draw(@x - img.width / 2.0, @y - img.height / 2.0, ZOrder::Hearts)
   end
 end
-
-#Collect hearts for points
