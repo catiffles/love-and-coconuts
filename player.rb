@@ -13,11 +13,11 @@ class Player
   end
 
   def walkleft
-    @x -= 1
+    @x -= 2
   end
 
   def walkright
-    @x += 1
+    @x += 2
   end
 
   def draw
@@ -37,7 +37,7 @@ class Player
 
   def hit_by_coconut(coconuts)
     coconuts.reject! do |coconut|
-      if Gosu::distance(@x, @y, coconut.x, coconut.y) < 10 then
+      if Gosu::distance(@x, @y, coconut.x, coconut.y) < 15 then
         @lives -= 1
         true
       else

@@ -36,6 +36,11 @@ class PlayState < GameState
       @coconuts.push(Coconut.new(@coconut_anim))
     end
 
+    if @player.lives == 0 then
+      @play_state = GameOverState.new
+      GameState.switch(@play_state)
+    end
+
   end
 
   def draw
